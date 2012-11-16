@@ -4,7 +4,7 @@ require 'active_record'
 require 'delayed_job'
 require 'haml'
 
-class DelayedJobWeb < Sinatra::Base
+class DelayedJobMongoidWeb < Sinatra::Base
   set :root, File.dirname(__FILE__)
   set :static, true
   set :public_folder,  File.expand_path('../public', __FILE__)
@@ -66,7 +66,7 @@ class DelayedJobWeb < Sinatra::Base
 
   %w(enqueued working pending failed).each do |page|
     get "/#{page}" do
-      @jobs = delayed_jobs(page.to_sym).order('created_at desc, id desc').offset(start).limit(per_page)
+      @jobs = delayed_jobs(page.to_sym).order_by([:created_at, :desc]).skip(start).limit(per_page)
       @all_jobs = delayed_jobs(page.to_sym)
       haml page.to_sym
     end
@@ -94,19 +94,19 @@ class DelayedJobWeb < Sinatra::Base
   end
 
   def delayed_jobs(type)
-    delayed_job.where(delayed_job_sql(type))
+    delayed_job.where(delayed_job_filter(type))
   end
 
-  def delayed_job_sql(type)
+  def delayed_job_filter(type)
     case type
     when :enqueued
-      ''
+      {}
     when :working
-      'locked_at is not null'
+      {locked_at: nil } #'locked_at is not null'
     when :failed
-      'last_error is not null'
+      {last_error: nil } # 'last_error is not null'
     when :pending
-      'attempts = 0'
+      {attempts: 0}
     end
   end
 

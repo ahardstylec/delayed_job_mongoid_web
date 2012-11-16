@@ -1,37 +1,19 @@
 require 'helper'
 require 'rack/test'
-require 'delayed_job_web/application/app'
+require 'delayed_job_mongoid_web/application/app'
+
 ENV['RACK_ENV'] = 'test'
+require 'delayed_job_mongoid'
 
-class Delayed::Job
-  class DelayedJobFake < Array
-    # fake out arel
-    def order(*args)
-      DelayedJobFake.new
-    end
 
-    def offset(*args)
-      DelayedJobFake.new
-    end
-
-    def limit(*args)
-      DelayedJobFake.new
-    end
-  end
-
-  def self.where(*args)
-    DelayedJobFake.new
-  end
-
-  def self.count(*args)
-    0
-  end
+Mongoid.configure do |config|
+  config.connect_to("dl_spec")
 end
 
 class TestDelayedJobWeb < Test::Unit::TestCase
   include Rack::Test::Methods
   def app
-    DelayedJobWeb.new
+    DelayedJobMongoidWeb.new
   end
 
   def should_respond_with_success

@@ -4,11 +4,11 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "delayed_job_web"
+  s.name = "delayed_job_mongoid_web"
   s.version = "1.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Erick Schmitt"]
+  s.authors = ["Erick Schmitt", "Rob Dingwell]
   s.date = "2012-05-18"
   s.description = "Web interface for delayed_job inspired by resque"
   s.email = "ejschmitt@gmail.com"
