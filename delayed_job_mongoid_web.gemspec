@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.date = "2012-05-18"
   s.description = "Web interface for delayed_job inspired by resque"
   s.email = "ejschmitt@gmail.com"
-  s.executables = ["delayed_job_web"]
+  s.executables = ["delayed_job_mongoid_web"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.markdown"
@@ -24,30 +24,30 @@ Gem::Specification.new do |s|
     "README.markdown",
     "Rakefile",
     "VERSION",
-    "bin/delayed_job_web",
-    "delayed_job_web.gemspec",
-    "lib/delayed_job_web.rb",
-    "lib/delayed_job_web/application/app.rb",
-    "lib/delayed_job_web/application/public/images/poll.png",
-    "lib/delayed_job_web/application/public/javascripts/application.js",
-    "lib/delayed_job_web/application/public/javascripts/jquery-1.7.1.min.js",
-    "lib/delayed_job_web/application/public/javascripts/jquery.relatize_date.js",
-    "lib/delayed_job_web/application/public/stylesheets/reset.css",
-    "lib/delayed_job_web/application/public/stylesheets/style.css",
-    "lib/delayed_job_web/application/views/enqueued.haml",
-    "lib/delayed_job_web/application/views/error.haml",
-    "lib/delayed_job_web/application/views/failed.haml",
-    "lib/delayed_job_web/application/views/job.haml",
-    "lib/delayed_job_web/application/views/layout.haml",
-    "lib/delayed_job_web/application/views/next_more.haml",
-    "lib/delayed_job_web/application/views/overview.haml",
-    "lib/delayed_job_web/application/views/pending.haml",
-    "lib/delayed_job_web/application/views/stats.haml",
-    "lib/delayed_job_web/application/views/working.haml",
+    "bin/delayed_job_mongoid_web",
+    "delayed_job_mongoid_web.gemspec",
+    "lib/delayed_job_mongoid_web.rb",
+    "lib/delayed_job_mongoid_web/application/app.rb",
+    "lib/delayed_job_mongoid_web/application/public/images/poll.png",
+    "lib/delayed_job_mongoid_web/application/public/javascripts/application.js",
+    "lib/delayed_job_mongoid_web/application/public/javascripts/jquery-1.7.1.min.js",
+    "lib/delayed_job_mongoid_web/application/public/javascripts/jquery.relatize_date.js",
+    "lib/delayed_job_mongoid_web/application/public/stylesheets/reset.css",
+    "lib/delayed_job_mongoid_web/application/public/stylesheets/style.css",
+    "lib/delayed_job_mongoid_web/application/views/enqueued.haml",
+    "lib/delayed_job_mongoid_web/application/views/error.haml",
+    "lib/delayed_job_mongoid_web/application/views/failed.haml",
+    "lib/delayed_job_mongoid_web/application/views/job.haml",
+    "lib/delayed_job_mongoid_web/application/views/layout.haml",
+    "lib/delayed_job_mongoid_web/application/views/next_more.haml",
+    "lib/delayed_job_mongoid_web/application/views/overview.haml",
+    "lib/delayed_job_mongoid_web/application/views/pending.haml",
+    "lib/delayed_job_mongoid_web/application/views/stats.haml",
+    "lib/delayed_job_mongoid_web/application/views/working.haml",
     "test/helper.rb",
-    "test/test_delayed_job_web.rb"
+    "test/test_delayed_job_mongoid_web.rb"
   ]
-  s.homepage = "http://github.com/ejschmitt/delayed_job_web"
+  s.homepage = "http://github.com/rdingwell/delayed_job_mongoid_web"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.22"
