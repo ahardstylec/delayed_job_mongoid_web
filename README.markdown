@@ -18,7 +18,7 @@ Quick Start For Rails 3 Applications
 Add the dependency to your Gemfile
 
 ```ruby
-gem "delayed_job_web"
+gem "delayed_job_mongoid_web"
 ```
 
 Install it...
@@ -30,14 +30,14 @@ bundle
 Add a route to your application for accessing the interface
 
 ```ruby
-match "/delayed_job" => DelayedJobWeb, :anchor => false
+match "/delayed_job" => DelayedJobMongoidWeb, :anchor => false
 ```
 
 You probably want to password protect the interface, an easy way is to add something like this your config.ru file
 
 ```ruby
 if Rails.env.production?
-  DelayedJobWeb.use Rack::Auth::Basic do |username, password|
+  DelayedJobMongoidWeb.use Rack::Auth::Basic do |username, password|
     username == 'username' && password == 'password'
   end
 end
