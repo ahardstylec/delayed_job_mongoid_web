@@ -94,19 +94,19 @@ class DelayedJobMongoidWeb < Sinatra::Base
   end
 
   def delayed_jobs(type)
-    delayed_job.where(delayed_job_filter(type))
+    delayed_job_filter(delayed_job,type)
   end
 
-  def delayed_job_filter(type)
+  def delayed_job_filter(crit, type)
     case type
     when :enqueued
-      {}
+      crit.where({})
     when :working
-      {locked_at: nil } #'locked_at is not null'
+      crit.where({:locked_at.ne =>nil }) #'locked_at is not null'
     when :failed
-      {last_error: nil } # 'last_error is not null'
+      crit.where({:last_error.ne => nil }) # 'last_error is not null'
     when :pending
-      {attempts: 0}
+      crit.where({attempts: 0})
     end
   end
 
