@@ -1,11 +1,24 @@
 #!/usr/bin/env ruby
 #
 begin
+  require 'mongoid'
+	Mongoid.configure do |config|
+  config.connect_to(ARGV[0])
+	end
   require 'delayed_job_mongoid_web/application/app.rb'
+
+  # Run the app!
+#
+
+
+
+puts "Hello, you're running delayed_job_web"
+DelayedJobMongoidWeb.run!
 rescue LoadError => e
 	puts e
   require 'rubygems'
   path = File.expand_path '../../lib', __FILE__
   $:.unshift(path) if File.directory?(path) && !$:.include?(path)
+  puts "including"
   require 'delayed_job_mongoid_web/application/app.rb'
 end
